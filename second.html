@@ -291,6 +291,20 @@
     color: #2196F3;
     font-size: 1.2em;
 }
+  /* Add this new style for highlighted DI entries */
+        .highlighted-di {
+            background-color: #FFEB3B !important;
+            font-weight: bold;
+            border: 2px solid #FF9800;
+        }
+
+    /* Add this new style for highlighted entries */
+        .highlighted-entry {
+            background-color: #FFEB3B !important;
+            font-weight: bold;
+            border: 2px solid #FF9800;
+        }
+
 </style>
 
 </head>
@@ -299,7 +313,7 @@
         <h1>2D Ledger Web Application</h1>
         
         <!-- List Table -->
-        <h2>List Table</h2>
+        <h2>အရောင်းList Table</h2>
         <div class="table-container">
             <table id="list-table">
                 <thead>
@@ -381,11 +395,11 @@
         </div>
 
         <div class="overbuy-section">
-            <button id="overbuy-btn">Overbuy</button>
+            <button id="overbuy-btn">Overbuy(ကာမယ်)</button>
             <div id="overbuy-modal" class="overbuy-modal">
                 <div class="overbuy-modal-content">
                     <span class="close-modal">&times;</span>
-                    <h2>Overbuy List</h2>
+                  <!--  <h2>Overbuy List</h2>-->
                     <div class="table-container">
                         <table id="overbuy-list-table">
                             <thead>
@@ -443,14 +457,13 @@
                                     <a>အပူးပါအခွေ</a>
                                 </div>
                             </div>
-                            <button id="disave-btn">DI Save (Enter)</button>
+                            <button id="disave-btn">Save (Enter)</button>
                         </div>
                     </div>
-<div class="summary-box">
-    <h3>DI Total Money</h3>
-    <p id="di-total-money">0</p>
-</div>
-                    <h3>Di List Table</h3>
+   <div class="total-ledger-row">
+            DiTotal Money: <span id="di-total-money">0</span>
+        </div>
+                    <!--<h3>Di List Table</h3>-->
                     <div class="table-container">
                         <table id="di-list-table">
                             <thead>
@@ -518,10 +531,18 @@
 
 
         
-        <!-- Total Ledger Money Display -->
+        <!-- Total Ledger Money splay -->
         <div class="total-ledger-row">
             Total Ledger Money: <span id="total-ledger-money">0</span>
         </div>
+<div class="total-ledger-row">
+            တင်ကြေး: <span id="di-total-money-display">0</span>
+        </div>
+<div class="total-ledger-row">
+            ရောင်းကြေးစုပေါင်း: <span id="total-money-display">0</span>
+        </div>
+
+    </div>
     </div>
   
     
@@ -529,25 +550,40 @@
     <div class="calculation-section">
         <h2>Profit/Loss Calculation</h2>
 <div class="input-group">
-    <label for="pnumber-input">P Number</label>
+    <label for="pnumber-input">P Number(ထွက်ဂဏန်း)</label>
     <input type="number" id="pnumber-input" maxlength="2" placeholder="00-99" pattern="[0-9]{2}">
 </div>
         <div class="input-row">
             <div class="input-group">
-                <label for="commission-input">Commission (%)</label>
+                <label for="commission-input">Commissionကော်(%)</label>
                 <input type="number" id="commission-input" min="0" placeholder="0">
             </div>
             <div class="input-group">
-                <label for="multiplier-input">Multiplier</label>
+                <label for="multiplier-input">Multiplier(အဆ)</label>
                 <input type="number" id="multiplier-input" min="0" placeholder="0">
             </div>
             <div class="input-group">
-                <label for="payout-input">Payout</label>
+                <label for="payout-input">မိမိပေါက်ကြေး</label>
                 <input type="number" id="payout-input" min="0" placeholder="0">
             </div>
+     <!-- Add this new display for DI total -->
+            <div class="input-group">
+                <label for="di-total-display">ကာဒိုင်သို့ပေါက်ကြေး</label>
+                <input type="number" id="di-total-display" placeholder="0" readonly>
+            </div>
+            <div class="input-group">
+                <label for="main-total-display">မူရင်းပေါက်ကြေး</label>
+                <input type="number" id="main-total-display" placeholder="0" readonly>
+            </div>
+
         </div>
+        </div>
+<div class="total-ledger-row">
+            မိမိ၏ဘရိတ်စာရင်းသာဖြစ်သည်  </div>
+
         <div class="calculation-results">
-            <p>Total Ledger Money: <span id="display-total-ledger-money">0</span></p>
+
+            <p>မိမိလည်ချာမှMoney: <span id="display-total-ledger-money">0</span></p>
             <p>Commission Amount: <span id="commission-amount">0</span></p>
             <p>After Commission: <span id="after-commission">0</span></p>
             <p>After Payout: <span id="after-payout">0</span></p>
@@ -635,14 +671,14 @@ updateDITotalMoney();
     });
 
     functionInput.addEventListener('input', function() {
-        updateFunctionDisplay(this.value, rMoneyGroup, ahkaysGroup, functionBtn);
+        updateFunctionsplay(this.value, rMoneyGroup, ahkaysGroup, functionBtn);
     });
 
     diFunctionInput.addEventListener('input', function() {
-        updateFunctionDisplay(this.value, diRMoneyGroup, diAhkaysGroup, diFunctionBtn);
+        updateFunctionsplay(this.value, diRMoneyGroup, diAhkaysGroup, diFunctionBtn);
     });
 
-    function updateFunctionDisplay(funcSign, rMoneyGroup, ahkaysGroup, functionBtn) {
+    function updateFunctionsplay(funcSign, rMoneyGroup, ahkaysGroup, functionBtn) {
         if (funcSign.includes('/')) {
             rMoneyGroup.style.display = 'block';
             ahkaysGroup.style.display = 'none';
@@ -859,16 +895,16 @@ updateDITotalMoney();
 
     // Get all numbers with same first or second digit (for 'a' - အပါ)
     function getAPANumbers(number) {
-        const firstDigit = number.charAt(0);
-        const secondDigit = number.charAt(1);
+        const firstgit = number.charAt(0);
+        const secondgit = number.charAt(1);
         let numbers = new Set();
         
         for (let i = 0; i < 10; i++) {
-            numbers.add(firstDigit + i);
+            numbers.add(firstgit + i);
         }
         
         for (let i = 0; i < 10; i++) {
-            numbers.add(i + secondDigit);
+            numbers.add(i + secondgit);
         }
         
         return Array.from(numbers);
@@ -891,13 +927,13 @@ updateDITotalMoney();
         const digit1 = parseInt(number.charAt(0));
         const digit2 = parseInt(number.charAt(1));
         const sum = digit1 + digit2;
-        const lastDigit = sum % 10;
+        const lastgit = sum % 10;
         
         let numbers = [];
         
         for (let i = 0; i < 10; i++) {
             for (let j = 0; j < 10; j++) {
-                if ((i + j) % 10 === lastDigit) {
+                if ((i + j) % 10 === lastgit) {
                     const num = i.toString() + j.toString();
                     numbers.push(num);
                 }
@@ -975,6 +1011,8 @@ function calculateDITotalMoney() {
 // Update DI total money display
 function updateDITotalMoney() {
     document.getElementById('di-total-money').textContent = calculateDITotalMoney();
+document.getElementById('di-total-money-display').textContent = calculateDITotalMoney();
+
 }
 
     // Render all tables
@@ -1135,6 +1173,7 @@ function updateDITotalMoney() {
     function updateTotalMoney() {
         const total = numberMoneyData.reduce((sum, item) => sum + parseInt(item.money), 0);
         totalMoneyEl.textContent = total;
+document.getElementById('total-money-display').textContent = total;
     }
 
     // Save data
@@ -1738,7 +1777,7 @@ updateDITotalMoney();
         const multiplier = parseFloat(multiplierInput.value) || 0;
         const payout = parseFloat(payoutInput.value) || 0;
 
-        // Display Total Ledger Money
+        // splay Total Ledger Money
         displayTotalLedgerMoney.textContent = totalLedgerMoney;
 
         // Calculate Commission Amount
@@ -1829,6 +1868,56 @@ updateDITotalMoney();
     document.getElementById('over-limit-table').style.display = 'none';
     document.getElementById('number-sequence-table').style.display = '';
 
+ // Add this new function to calculate DI total for a specific number
+        function calculateDITotalForNumber(number) {
+            return diNumberMoneyData
+                .filter(item => item.number === number)
+                .reduce((sum, item) => sum + parseInt(item.money), 0);
+        }
+
+        // Add this new function to highlight DI entries in the table
+        function highlightDIEntries(number) {
+            // Remove previous highlights
+            const diRows = document.querySelectorAll('#di-list-table tr');
+            diRows.forEach(row => {
+                row.classList.remove('highlighted-di');
+            });
+
+            // Highlight matching DI entries
+            diNumberMoneyData.forEach((item, index) => {
+                if (item.number === number) {
+                    const row = diListTable.rows[index];
+                    if (row) row.classList.add('highlighted-di');
+                }
+            });
+        }
+
+     // Add this new function to calculate main list total for a specific number
+        function calculateMainTotalForNumber(number) {
+            return numberMoneyData
+                .filter(item => item.number === number)
+                .reduce((sum, item) => sum + parseInt(item.money), 0);
+        }
+
+        // Add this new function to highlight main list entries
+        function highlightMainEntries(number) {
+            // Remove previous highlights
+            const mainRows = document.querySelectorAll('#list-table tr');
+            mainRows.forEach(row => {
+                row.classList.remove('highlighted-entry');
+            });
+
+            // Highlight matching main entries
+            numberMoneyData.forEach((item, index) => {
+                if (item.number === number) {
+                    const row = listTable.rows[index];
+                    if (row) row.classList.add('highlighted-entry');
+                }
+            });
+        }
+
+
+
 
 
    // pnumber input change event listener
@@ -1838,12 +1927,24 @@ document.getElementById('pnumber-input').addEventListener('input', function() {
     if(pnumber.length === 2) {
         // Calculate money for this number from sequence table
         const totalMoney = calculateMoneyForNumber(pnumber);
-        
+             const diMoney = calculateDITotalForNumber(pnumber);
+  const mainMoney = calculateMainTotalForNumber(pnumber);
+
         // Fill the payout input
         document.getElementById('payout-input').value = totalMoney;
-        
+        document.getElementById('di-total-display').value = diMoney;
+document.getElementById('main-total-display').value = mainMoney;
         // Highlight the number in sequence table (optional)
         highlightNumberInSequenceTable(pnumber);
+highlightDIEntries(pnumber);
+highlightMainEntries(pnumber);
+const firstHighlighted = document.querySelector('.highlighted-entry');
+                if (firstHighlighted) {
+                    firstHighlighted.scrollIntoView({behavior: 'smooth', block: 'center'});
+                }
+
+
+
     }
 });
 
