@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Development By KK-User</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .container {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 90%;
+            max-width: 800px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        h1 {
+            text-align: center;
+            color: #4a4a4a;
+            margin-bottom: 30px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .header-row {
+            background: linear-gradient(90deg, #ff9a9e 0%, #fad0c4 100%);
+            color: white;
+            font-weight: bold;
+            animation: colorChange 5s infinite alternate;
+        }
+        
+        @keyframes colorChange {
+            0% { background: linear-gradient(90deg, #ff9a9e 0%, #fad0c4 100%); }
+            25% { background: linear-gradient(90deg, #a18cd1 0%, #fbc2eb 100%); }
+            50% { background: linear-gradient(90deg, #fbc2eb 0%, #a6c1ee 100%); }
+            75% { background: linear-gradient(90deg, #84fab0 0%, #8fd3f4 100%); }
+            100% { background: linear-gradient(90deg, #a6c0fe 0%, #f68084 100%); }
+        }
+        
+        .instruction-row {
+            background-color: #f8f9fa;
+            color: #555;
+            font-size: 14px;
+            line-height: 1.6;
+            border-bottom: 2px solid #ddd;
+            animation: textColorChange 8s infinite;
+        }
+        
+        @keyframes textColorChange {
+            0% { color: #555; }
+            25% { color: #ff6b6b; }
+            50% { color: #4ecdc4; }
+            75% { color: #ff9ff3; }
+            100% { color: #1dd1a1; }
+        }
+        
+        .key-mapping-row {
+            background-color: #fff;
+        }
+        
+        .key-mapping {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 10px 0;
+        }
+        
+        .key-pair {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 5px;
+            min-width: 80px;
+        }
+        
+        .key {
+            background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            animation: keyFloat 3s infinite ease-in-out;
+            margin-bottom: 5px;
+            width: 40px;
+            text-align: center;
+        }
+        
+        @keyframes keyFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        .key:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        }
+        
+        .meaning {
+            color: #666;
+            font-size: 13px;
+            animation: textColorChange 10s infinite;
+        }
+        
+        .section-title {
+            font-weight: bold;
+            color: #4a4a4a;
+            animation: pulse 2s infinite;
+            text-align: center;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>2D အသုံးပြုနည်း</h1>
+        
+        <table>
+            <tr class="header-row">
+                <th colspan="2">2D အသုံးပြုနည်း</th>
+            </tr>
+            
+            <tr class="instruction-row">
+                <td colspan="2">
+                    ဂဏန်းနှစ်လုံး ထည့်ပီးလျင် focusဟာ function sign ထဲရောက်ပါ့မယ် ဒဲ့ ဆိုenterနိုပ်ရုံဘဲ moneyထည့် enter ဆိုရင်ရပါပီ 
+                    အမျိူးအစားအလိုက် လျှင်မြန်ရေးထည့်နိုင်ရန် ကီးများထည့်ပေးထားပါတယ် ကီး အလွတ်မရရင်လည်း function ခလုတ်မှာရွှေးချယ်နိုင်ပါတယ် 
+                    ကီး များကို အောက်ပါဇယားတွင်ပြထားပါသည်
+                </td>
+            </tr>
+            
+            <tr>
+                <td colspan="2" class="section-title">ကီး အမျိုးအစား</td>
+            </tr>
+            
+            <tr class="key-mapping-row">
+                <td colspan="2">
+                    <div class="key-mapping">
+                        <div class="key-pair">
+                            <span class="key">/</span>
+                            <span class="meaning">အာ</span>
+                        </div>
+                        <div class="key-pair">
+                            <span class="key">+</span>
+                            <span class="meaning">အပူး</span>
+                        </div>
+                        <div class="key-pair">
+                            <span class="key">a</span>
+                            <span class="meaning">အပါ</span>
+                        </div>
+                        <div class="key-pair">
+                            <span class="key">b</span>
+                            <span class="meaning">ဘရိတ်</span>
+                        </div>
+                        <div class="key-pair">
+                            <span class="key">p</span>
+                            <span class="meaning">ပါဝါ</span>
+                        </div>
+                        <div class="key-pair">
+                            <span class="key">k</span>
+                            <span class="meaning">နက္ခ</span>
+                        </div>
+                        <div class="key-pair">
+                            <span class="key">t</span>
+                            <span class="meaning">ထိပ်</span>
+                        </div>
+                        <div class="key-pair">
+                            <span class="key">d</span>
+                            <span class="meaning">ပိတ်</span>
+                        </div>
+                        <div class="key-pair">
+                            <span class="key">sg</span>
+                            <span class="meaning">ညီကို</span>
+                        </div>
+                        <div class="key-pair">
+                            <span class="key">gs</span>
+                            <span class="meaning">ကိုညီ</span>
+                        </div>
+                        <div class="key-pair">
+                            <span class="key">x</span>
+                            <span class="meaning">အခွေ</span>
+                        </div>
+                        <div class="key-pair">
+                            <span class="key">z</span>
+                            <span class="meaning">အပူးပါအခွေ</span>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
