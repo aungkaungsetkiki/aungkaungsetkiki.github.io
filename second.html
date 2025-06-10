@@ -313,7 +313,7 @@
         <h1>2D Ledger Web Application</h1>
         
         <!-- List Table -->
-        <h2>အရောင်းList Table</h2>
+        <h2>List Table</h2>
         <div class="table-container">
             <table id="list-table">
                 <thead>
@@ -395,7 +395,7 @@
         </div>
 
         <div class="overbuy-section">
-            <button id="overbuy-btn">Overbuy(ကာမယ်)</button>
+            <button id="overbuy-btn">Overbuy</button>
             <div id="overbuy-modal" class="overbuy-modal">
                 <div class="overbuy-modal-content">
                     <span class="close-modal">&times;</span>
@@ -457,7 +457,7 @@
                                     <a>အပူးပါအခွေ</a>
                                 </div>
                             </div>
-                            <button id="disave-btn">Save (Enter)</button>
+                            <button id="disave-btn">DI Save (Enter)</button>
                         </div>
                     </div>
    <div class="total-ledger-row">
@@ -550,40 +550,36 @@
     <div class="calculation-section">
         <h2>Profit/Loss Calculation</h2>
 <div class="input-group">
-    <label for="pnumber-input">P Number(ထွက်ဂဏန်း)</label>
+    <label for="pnumber-input">P Number</label>
     <input type="number" id="pnumber-input" maxlength="2" placeholder="00-99" pattern="[0-9]{2}">
 </div>
         <div class="input-row">
             <div class="input-group">
-                <label for="commission-input">Commissionကော်(%)</label>
+                <label for="commission-input">Commission (%)</label>
                 <input type="number" id="commission-input" min="0" placeholder="0">
             </div>
             <div class="input-group">
-                <label for="multiplier-input">Multiplier(အဆ)</label>
+                <label for="multiplier-input">Multiplier</label>
                 <input type="number" id="multiplier-input" min="0" placeholder="0">
             </div>
             <div class="input-group">
-                <label for="payout-input">မိမိပေါက်ကြေး</label>
+                <label for="payout-input">Payout</label>
                 <input type="number" id="payout-input" min="0" placeholder="0">
             </div>
      <!-- Add this new display for DI total -->
             <div class="input-group">
-                <label for="di-total-display">ကာဒိုင်သို့ပေါက်ကြေး</label>
+                <label for="di-total-display">DI Total for Number</label>
                 <input type="number" id="di-total-display" placeholder="0" readonly>
             </div>
             <div class="input-group">
-                <label for="main-total-display">မူရင်းပေါက်ကြေး</label>
+                <label for="main-total-display">Main Total</label>
                 <input type="number" id="main-total-display" placeholder="0" readonly>
             </div>
 
         </div>
         </div>
-<div class="total-ledger-row">
-            မိမိ၏ဘရိတ်စာရင်းသာဖြစ်သည်  </div>
-
         <div class="calculation-results">
-
-            <p>မိမိလည်ချာမှMoney: <span id="display-total-ledger-money">0</span></p>
+            <p>Total Ledger Money: <span id="display-total-ledger-money">0</span></p>
             <p>Commission Amount: <span id="commission-amount">0</span></p>
             <p>After Commission: <span id="after-commission">0</span></p>
             <p>After Payout: <span id="after-payout">0</span></p>
