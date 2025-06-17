@@ -1,3 +1,4 @@
+
     // DOM Elements
     const numberInput = document.getElementById('number-input');
     const functionInput = document.getElementById('function-input');
